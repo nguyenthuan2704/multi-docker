@@ -13,3 +13,10 @@ after_install:
   - docker build -t nguyenthuan2704/multi-nginx ./nginx
   - docker build -t nguyenthuan2704/multi-server ./server
   - docker build -t nguyenthuan2704/multi-worker ./worker
+  #Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push nguyenthuan2704/multi-client
+  - docker push nguyenthuan2704/multi-nginx
+  - docker push nguyenthuan2704/multi-server
+  - docker push nguyenthuan2704/multi-worker
